@@ -233,21 +233,22 @@ src={`https://www.youtube-nocookie.com/embed/${getYouTubeId(countdown.videoUrl |
 
 {/* VÍDEO MP4 (apenas se NÃO for YouTube) */}
 {isVideo && !isYouTube && (
-              <video 
+
+<video 
   ref={videoRef}
   className="w-full"
   playsInline
-  muted
   loop
   autoPlay
-                preload="metadata"
-                style={{ 
-                  width: "100%", 
-                  objectFit: "cover",
-                  objectPosition: "center",
-                  maxHeight: "280px",
-                  minHeight: "220px"
-                }}
+  preload="metadata"
+  style={{ 
+    width: "100%", 
+    objectFit: "contain",
+    maxHeight: "280px",
+    backgroundColor: "#000"
+  }}
+
+  
                 onPlay={() => setIsVideoPlaying(true)}
                 onPause={() => setIsVideoPlaying(false)}
               >
