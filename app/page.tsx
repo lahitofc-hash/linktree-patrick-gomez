@@ -259,13 +259,15 @@ src={`https://www.youtube-nocookie.com/embed/${getYouTubeId(countdown.videoUrl |
   loop
   autoPlay
   preload="metadata"
+
   style={{ 
-    width: "100%", 
-    objectFit: "contain",
-    maxHeight: "280px",
-    backgroundColor: "#000",
-    cursor: "pointer"
-  }}
+  width: "100%", 
+  objectFit: "cover",
+  objectPosition: "center",
+  maxHeight: "280px",
+  minHeight: "220px"
+}}
+
   onClick={toggleVideo}
 
 
