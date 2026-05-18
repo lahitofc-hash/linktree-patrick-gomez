@@ -238,6 +238,7 @@ src={`https://www.youtube-nocookie.com/embed/${getYouTubeId(countdown.videoUrl |
   ref={videoRef}
   className="w-full"
   playsInline
+  muted
   loop
   autoPlay
   preload="metadata"
@@ -245,10 +246,12 @@ src={`https://www.youtube-nocookie.com/embed/${getYouTubeId(countdown.videoUrl |
     width: "100%", 
     objectFit: "contain",
     maxHeight: "280px",
-    backgroundColor: "#000"
+    backgroundColor: "#000",
+    cursor: "pointer"
   }}
+  onClick={toggleVideo}
 
-  
+
                 onPlay={() => setIsVideoPlaying(true)}
                 onPause={() => setIsVideoPlaying(false)}
               >
@@ -278,19 +281,20 @@ src={`https://www.youtube-nocookie.com/embed/${getYouTubeId(countdown.videoUrl |
             {isVideo && (
               <>
 {countdown.showMute !== false && (
-<div className="absolute top-2 left-2 flex gap-1 z-30">                    <motion.button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    onClick={toggleMute}
-                    className="w-7 h-7 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center cursor-pointer"
-                  >
-                    {isVideoMuted ? (
-                      <Icons.VolumeX size={12} className="text-white" />
-                    ) : (
-                      <Icons.Volume2 size={12} className="text-white" />
-                    )}
-                  </motion.button>
-                </div>
+  <div className="absolute top-2 left-2 z-30">
+    <motion.button
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+      onClick={toggleMute}
+      className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center cursor-pointer hover:bg-black/80"
+    >
+      {isVideoMuted ? (
+        <Icons.VolumeX size={14} className="text-white" />
+      ) : (
+        <Icons.Volume2 size={14} className="text-white" />
+      )}
+    </motion.button>
+  </div>
 )}
 
                 <div 
