@@ -111,7 +111,7 @@ const isImage = countdown.videoUrl && isImageUrl(countdown.videoUrl);
 const isYouTube = countdown.videoUrl && 
   (countdown.videoUrl.includes('youtube.com') || 
    countdown.videoUrl.includes('youtu.be'));
-const getYouTubeId = (url: string) => {
+const getYouTubeId = (url?: string) => {
   if (!url) return '';
   const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
   return match ? match[1] : url;
@@ -222,7 +222,7 @@ style={{
   <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
     <iframe
       className="absolute inset-0 w-full h-full"
-src={`https://www.youtube-nocookie.com/embed/${getYouTubeId(countdown.videoUrl)}?autoplay=1&mute=1&loop=1&playlist=${getYouTubeId(countdown.videoUrl)}&controls=1`}      allow="autoplay; encrypted-media"
+src={`https://www.youtube-nocookie.com/embed/${getYouTubeId(countdown.videoUrl || '')}?autoplay=1&mute=1&loop=1&playlist=${getYouTubeId(countdown.videoUrl)}&controls=1`}      allow="autoplay; encrypted-media"
       allowFullScreen
       style={{ border: 'none' }}
     />
