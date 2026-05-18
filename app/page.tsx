@@ -111,6 +111,9 @@ const isImage = countdown.videoUrl && isImageUrl(countdown.videoUrl);
 const isYouTube = countdown.videoUrl && 
   (countdown.videoUrl.includes('youtube.com') || 
    countdown.videoUrl.includes('youtu.be'));
+
+   const isInstagram = countdown.videoUrl && 
+  countdown.videoUrl.includes('instagram.com');
 const getYouTubeId = (url?: string) => {
   if (!url) return '';
   const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
@@ -214,8 +217,22 @@ style={{
         />
 
         {/* COM MÍDIA PRINCIPAL (VÍDEO OU IMAGEM) */}
-{(isVideo || isImage || isYouTube) && (
-            <div className="relative w-full">
+{(isVideo || isImage || isYouTube || isInstagram) && (
+  <div className="relative w-full">
+
+{/* INSTAGRAM EMBED */}
+{isInstagram && (
+  <div className="relative w-full" style={{ paddingBottom: '100%' }}>
+    <iframe
+      className="absolute inset-0 w-full h-full"
+      src={`${countdown.videoUrl}embed/`}
+      allowFullScreen
+      scrolling="no"
+      style={{ border: 'none' }}
+    />
+    <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none" />
+  </div>
+)}
 
 {/* YOUTUBE EMBED */}
 {isYouTube && (
